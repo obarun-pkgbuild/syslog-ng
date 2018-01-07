@@ -3,8 +3,8 @@
 # 						Maintainer: Eric Bélanger <eric@archlinux.org>
 
 pkgname=syslog-ng
-pkgver=3.12.1
-pkgrel=5
+pkgver=3.13.2
+pkgrel=2
 pkgdesc="Next-generation syslogd with advanced networking and filtering capabilities"
 arch=(x86_64)
 url="http://www.balabit.com/network-security/syslog-ng/"
@@ -15,20 +15,26 @@ checkdepends=('python-nose' 'python-ply')
 optdepends=('logrotate: for rotating log files'
 	    'json-c: for json-plugin'
 	    'curl: for the HTTP module'
-	    'libmongoc: for the MongoDB plugin')
+	    'libmongoc: for the MongoDB plugin'
+	    'python: for the Python plugin')
 conflicts=('eventlog')
 replaces=('eventlog')
 backup=('etc/syslog-ng/scl.conf'
         'etc/syslog-ng/syslog-ng.conf'
         'etc/logrotate.d/syslog-ng')
 source=(https://github.com/balabit/syslog-ng/releases/download/syslog-ng-$pkgver/$pkgname-$pkgver.tar.gz
-        syslog-ng.conf syslog-ng.logrotate)
-sha1sums=('cc96df76ef2dd9b59a752463eca2a5370c9b3a23'
+        syslog-ng.conf syslog-ng.logrotate
+        syslog-ng-json-c-0.13.patch::"https://github.com/balabit/syslog-ng/commit/1b824dd6.patch")
+sha1sums=('702a5ab2f5ef05d5852e3fe25f1354aab62ca576'
           'fd276dd470edb16a10d96f3188e1f9c93c0d8271'
-          '949128fe3d7f77a7aab99048061f885bc758000c')
+          '949128fe3d7f77a7aab99048061f885bc758000c'
+          '7950e5a8076ce1c5803246eeba60d6289e1a65a3')
 validpgpkeys=('6DD4217456569BA711566AC7F06E8FDE7B45DAAC') # Eric Vidal
 
-
+prepare() {
+	cd "${pkgname}"-"${pkgver}"
+	patch -p1 -i ../syslog-ng-json-c-0.13.patch # Fix build with json-c 0.13
+}
 build() {
   cd ${pkgname}-$pkgver
   ./configure 	--prefix=/usr \
