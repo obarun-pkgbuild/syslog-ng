@@ -4,7 +4,7 @@
 
 pkgname=syslog-ng
 pkgver=3.13.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Next-generation syslogd with advanced networking and filtering capabilities"
 arch=(x86_64)
 url="http://www.balabit.com/network-security/syslog-ng/"
@@ -26,7 +26,7 @@ source=(https://github.com/balabit/syslog-ng/releases/download/syslog-ng-$pkgver
         syslog-ng.conf syslog-ng.logrotate
         syslog-ng-json-c-0.13.patch::"https://github.com/balabit/syslog-ng/commit/1b824dd6.patch")
 sha1sums=('702a5ab2f5ef05d5852e3fe25f1354aab62ca576'
-          'fd276dd470edb16a10d96f3188e1f9c93c0d8271'
+          'f0f8f7b789dfc17e20d3bc54f3b6e4786a0f641d'
           '949128fe3d7f77a7aab99048061f885bc758000c'
           '7950e5a8076ce1c5803246eeba60d6289e1a65a3')
 validpgpkeys=('6DD4217456569BA711566AC7F06E8FDE7B45DAAC') # Eric Vidal
