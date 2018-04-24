@@ -4,12 +4,12 @@
 
 pkgname=syslog-ng
 pkgver=3.14.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Next-generation syslogd with advanced networking and filtering capabilities"
 arch=(x86_64)
 url="http://www.balabit.com/network-security/syslog-ng/"
 license=('GPL2' 'LGPL2.1')
-depends=('awk' 'glib2' 'libdbi')
+depends=('awk' 'glib2' 'libdbi' 'libnsl')
 makedepends=('python2' 'libxslt' 'json-c' 'libmongoc' 'librabbitmq-c' 'python')
 checkdepends=('python-nose' 'python-ply')
 optdepends=('logrotate: for rotating log files'
