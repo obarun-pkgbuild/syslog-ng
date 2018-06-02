@@ -3,19 +3,19 @@
 # 						Maintainer: Eric Bélanger <eric@archlinux.org>
 
 pkgname=syslog-ng
-pkgver=3.14.1
-pkgrel=3
+pkgver=3.15.1
+pkgrel=2
 pkgdesc="Next-generation syslogd with advanced networking and filtering capabilities"
 arch=(x86_64)
 url="http://www.balabit.com/network-security/syslog-ng/"
 license=('GPL2' 'LGPL2.1')
 depends=('awk' 'glib2' 'libdbi' 'libnsl')
-makedepends=('python2' 'libxslt' 'json-c' 'libmongoc' 'librabbitmq-c' 'python')
+makedepends=('libxslt' 'json-c' 'mongo-c-driver' 'librabbitmq-c' 'python')
 checkdepends=('python-nose' 'python-ply')
 optdepends=('logrotate: for rotating log files'
 	    'json-c: for json-plugin'
 	    'curl: for the HTTP module'
-	    'libmongoc: for the MongoDB plugin'
+	    'mongo-c-driver: for the MongoDB plugin'
 	    'python: for the Python plugin')
 conflicts=('eventlog')
 replaces=('eventlog')
@@ -24,8 +24,8 @@ backup=('etc/syslog-ng/scl.conf'
         'etc/logrotate.d/syslog-ng')
 source=(https://github.com/balabit/syslog-ng/releases/download/syslog-ng-$pkgver/$pkgname-$pkgver.tar.gz
         syslog-ng.conf syslog-ng.logrotate)
-sha1sums=('1461f1eded067524fa8e5dbd0f4f23a4dd694ef4'
-          'b7c11c7252ad36b842689109ada47d578b38e2cf'
+sha1sums=('b2cb71bd455089b3e1e3e825cd09faea5685ae04'
+          '9caec3d4e9d9b7299e42ef13dc5a89a99278ab6e'
           '949128fe3d7f77a7aab99048061f885bc758000c')
 validpgpkeys=('6DD4217456569BA711566AC7F06E8FDE7B45DAAC') # Eric Vidal
 
